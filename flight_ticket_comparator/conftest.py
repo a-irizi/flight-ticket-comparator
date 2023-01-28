@@ -1,0 +1,28 @@
+import pytest
+from bot.bot import QatarAirwaysBot, RoyalAirMarocBot, RyanairBot
+
+from bot import constants as const
+import enum
+
+
+class BotEnum(enum.Enum):
+    ROYAL_AIR_MAROC = (1, "Royal Air Maroc")
+    RYANAIR = (2, "Ryanair")
+    QATAR_AIR_WAYS = (3, "Qatar Airways")
+
+
+@pytest.fixture
+def bot_factory():
+    def build_bot(bot_type: BotEnum, driver_path=const.DRIVER_PATH):
+        bot = None
+
+        if bot_type == BotEnum.ROYAL_AIR_MAROC:
+            bot = RoyalAirMarocBot(driver_path=driver_path)
+        elif bot_type == BotEnum.RYANAIR:
+            bot = RyanairBot(driver_path=driver_path)
+        elif bot_type == BotEnum.QATAR_AIR_WAYS:
+            bot = QatarAirwaysBot(driver_path=driver_path)
+
+        return bot
+
+    return build_bot
