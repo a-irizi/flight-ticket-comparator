@@ -26,3 +26,18 @@ def bot_factory():
         return bot
 
     return build_bot
+
+
+@pytest.fixture
+def royal_air_maroc_bot(bot_factory):
+    return bot_factory(bot_type=BotEnum.ROYAL_AIR_MAROC)
+
+
+@pytest.fixture
+def ryanair_bot(bot_factory):
+    return bot_factory(bot_type=BotEnum.RYANAIR)
+
+
+@pytest.fixture
+def qatar_airways_bot(bot_factory):
+    return bot_factory(bot_type=BotEnum.QATAR_AIR_WAYS)
