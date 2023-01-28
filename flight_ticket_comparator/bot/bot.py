@@ -40,7 +40,7 @@ class BaseBot(ABC, webdriver.Firefox):
         pass
 
     @abstractmethod
-    def select_passengers(self, adult: int = 1, teen: int = 1, child: int = 0, infant: int = 0):
+    def select_passengers(self, adult: int = 1, teen: int = 0, child: int = 0, infant: int = 0):
         pass
 
     @abstractmethod
