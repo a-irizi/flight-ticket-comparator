@@ -19,9 +19,8 @@ class BaseBot(ABC, webdriver.Firefox):
         os.environ['PATH'] += self.driver_path
         super(BaseBot, self).__init__()
 
-    @abstractmethod
     def land_first_page(self):
-        pass
+        self.get(self.home_page_url)
 
     @abstractmethod
     def select_start_date(self, date: datetime):
@@ -60,9 +59,6 @@ class RoyalAirMarocBot(BaseBot):
     def __init__(self, home_page_url=const.ROYAL_AIR_MAROC_URL, driver_path=const.DRIVER_PATH):
         super().__init__(home_page_url=home_page_url, driver_path=driver_path)
 
-    def land_first_page(self):
-        raise NotImplementedError
-
     def select_start_date(self, date: datetime):
         raise NotImplementedError
 
@@ -90,9 +86,6 @@ class RyanairBot(BaseBot):
     def __init__(self, home_page_url=const.RYANAIR_URL, driver_path=const.DRIVER_PATH):
         super().__init__(home_page_url=home_page_url, driver_path=driver_path)
 
-    def land_first_page(self):
-        raise NotImplementedError
-
     def select_start_date(self, date: datetime):
         raise NotImplementedError
 
@@ -119,9 +112,6 @@ class QatarAirwaysBot(BaseBot):
 
     def __init__(self, home_page_url=const.QATAR_AIRWAYS_URL, driver_path=const.DRIVER_PATH):
         super().__init__(home_page_url=home_page_url, driver_path=driver_path)
-
-    def land_first_page(self):
-        raise NotImplementedError
 
     def select_start_date(self, date: datetime):
         raise NotImplementedError
