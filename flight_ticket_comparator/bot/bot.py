@@ -13,7 +13,7 @@ class TicketClassEnum(enum.Enum):
 
 
 class BaseBot(ABC, webdriver.Firefox):
-    def __init__(self, driver_path=const.DRIVER_PATH, home_page_url):
+    def __init__(self, home_page_url, driver_path=const.DRIVER_PATH):
         self.driver_path = driver_path
         self.home_page_url = home_page_url
         os.environ['PATH'] += self.driver_path
