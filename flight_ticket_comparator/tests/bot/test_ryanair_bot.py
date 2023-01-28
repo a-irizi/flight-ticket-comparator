@@ -17,3 +17,14 @@ def test_GIVEN_bot_WHEN_instantiating_THEN_assert_bot_home_page_url_equals_RYANA
     print(f"bot.home_page_url = {bot.home_page_url}")
 
     assert bot.home_page_url == const.RYANAIR_URL
+
+
+def test_GIVEN_bot_WHEN_land_first_page_THEN_assert_bot_current_page_url_equals_home_page_url(ryanair_bot):
+    bot = ryanair_bot
+
+    bot.land_first_page()
+
+    print(f"bot.current_url = {bot.current_url}")
+    print(f"bot.home_page_url = {bot.home_page_url}")
+
+    assert bot.current_url == bot.home_page_url
