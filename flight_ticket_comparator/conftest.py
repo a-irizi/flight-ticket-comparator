@@ -8,7 +8,7 @@ import enum
 class BotEnum(enum.Enum):
     ROYAL_AIR_MAROC = (1, "Royal Air Maroc")
     RYANAIR = (2, "Ryanair")
-    QATAR_AIR_WAYS = (3, "Qatar Airways")
+    QATAR_AIRWAYS = (3, "Qatar Airways")
 
 
 @pytest.fixture
