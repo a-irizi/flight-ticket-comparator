@@ -24,8 +24,8 @@ class BaseBot(ABC, webdriver.Firefox):
         pass
 
     def land_first_page(self):
-        self._first_page_cleanup()
         self.get(self.home_page_url)
+        self._first_page_cleanup()
 
     @abstractmethod
     def select_start_date(self, date: datetime):
