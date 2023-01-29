@@ -19,7 +19,12 @@ class BaseBot(ABC, webdriver.Firefox):
         os.environ['PATH'] += self.driver_path
         super(BaseBot, self).__init__()
 
+    @abstractmethod
+    def __first_page_cleanup(self):
+        pass
+
     def land_first_page(self):
+        self.__first_page_cleanup()
         self.get(self.home_page_url)
 
     @abstractmethod
