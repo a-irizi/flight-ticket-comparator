@@ -103,7 +103,32 @@ class RoyalAirMarocBot(BaseBot):
         pass
 
     def select_landing_city(self, city_name: str):
-        raise NotImplementedError
+        WebDriverWait(self, 30).until(
+            EC.presence_of_element_located(
+                (By.XPATH, const.ROYAL_AIR_MAROC_FP_CLEANUP["FILTER_INPUT"])) and
+            EC.element_to_be_clickable(
+                (By.XPATH, const.ROYAL_AIR_MAROC_FP_CLEANUP["FILTER_INPUT"]))
+        )
+
+        filter_input = self.find_element(
+            By.XPATH, const.ROYAL_AIR_MAROC_FP_CLEANUP["FILTER_INPUT"])
+        webdriver.ActionChains(self).move_to_element(
+            filter_input).click().perform()
+        filter_input.send_keys(city_name)
+
+        location_list = self.find_element(
+            By.XPATH, const.ROYAL_AIR_MAROC_FP_CLEANUP["LOCATION_LIST"])
+
+        location = location_list.find_elements(
+            By.CSS_SELECTOR, const.ROYAL_AIR_MAROC_FP_CLEANUP["LOCATION"])
+
+        if len(location) != 1:
+            raise ValueError(
+                f'Royal Air Maroc does not list an airport in {city_name}')
+
+        location = location[0]
+
+        location.click()
 
     def select_passengers(self, adult: int = 1, teen: int = 1, child: int = 0, infant: int = 0):
         raise NotImplementedError

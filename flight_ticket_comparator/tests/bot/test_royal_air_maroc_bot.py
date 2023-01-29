@@ -38,6 +38,6 @@ def test_GIVEN_bot_and_city_WHEN_select_city_and_city_is_correct_THEN_assert_sel
         assert False, f'land_first_page raised an exception {exc}'
 
     try:
-        bot.select_city(city_name="casablanca")
+        bot.select_landing_city(city_name="casablanca")
     except Exception as exc:
         assert False, f'select_city raised an exception {exc}'
