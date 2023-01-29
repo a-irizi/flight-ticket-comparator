@@ -28,3 +28,16 @@ def test_GIVEN_bot_WHEN_land_first_page_THEN_assert_bot_current_page_url_equals_
     print(f"bot.home_page_url = {bot.home_page_url}")
 
     assert bot.current_url == bot.home_page_url
+
+def test_GIVEN_bot_and_city_WHEN_select_city_and_city_is_correct_THEN_assert_select_city_does_not_raise_exception(royal_air_maroc_bot):
+    bot = royal_air_maroc_bot
+
+    try:
+        bot.land_first_page()
+    except Exception as exc:
+        assert False, f'land_first_page raised an exception {exc}'
+
+    try:
+        bot.select_city(city_name="casablanca")
+    except Exception as exc:
+        assert False, f'select_city raised an exception {exc}'
