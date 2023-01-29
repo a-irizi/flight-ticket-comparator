@@ -1,8 +1,11 @@
 from datetime import datetime
 import enum
 from selenium import webdriver
+from selenium.common.exceptions import NoSuchElementException
 import os
 from abc import ABC, abstractmethod
+
+from selenium.webdriver.common.by import By
 
 from . import constants as const
 
@@ -71,6 +74,16 @@ class RoyalAirMarocBot(BaseBot):
 
     def __init__(self, home_page_url=const.ROYAL_AIR_MAROC_URL, driver_path=const.DRIVER_PATH):
         super().__init__(home_page_url=home_page_url, driver_path=driver_path)
+
+    def _first_page_cleanup(self):
+        try:
+            close_button = self.find_element(
+                By.CSS_SELECTOR, const.ROYAL_AIR_MAROC_FP_CLEANUP["CLOSE_BUTTON"]
+            )
+        except NoSuchElementException:
+            pass
+        else:
+            close_button.click()
 
     def select_start_date(self, date: datetime):
         raise NotImplementedError
