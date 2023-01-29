@@ -20,11 +20,11 @@ class BaseBot(ABC, webdriver.Firefox):
         super(BaseBot, self).__init__()
 
     @abstractmethod
-    def __first_page_cleanup(self):
+    def _first_page_cleanup(self):
         pass
 
     def land_first_page(self):
-        self.__first_page_cleanup()
+        self._first_page_cleanup()
         self.get(self.home_page_url)
 
     @abstractmethod
