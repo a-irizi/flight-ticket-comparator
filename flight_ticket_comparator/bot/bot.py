@@ -94,13 +94,13 @@ class RoyalAirMarocBot(BaseBot):
         raise NotImplementedError
 
     def select_departure_country(self, country_name: str):
-        raise NotImplementedError
+        pass
 
     def select_departure_city(self, city_name: str):
         raise NotImplementedError
 
     def select_landing_country(self, country_name: str):
-        raise NotImplementedError
+        pass
 
     def select_landing_city(self, city_name: str):
         raise NotImplementedError
@@ -178,7 +178,7 @@ class QatarAirwaysBot(BaseBot):
         raise NotImplementedError
 
     def select_departure_country(self, country_name: str):
-        raise NotImplementedError
+        pass
 
     def select_departure_city(self, city_name: str):
         raise NotImplementedError
