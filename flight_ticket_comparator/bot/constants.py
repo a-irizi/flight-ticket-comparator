@@ -12,3 +12,9 @@ ROYAL_AIR_MAROC_FP_CLEANUP = {
     "LOCATION_LIST":  "/html/body/div[1]/div/div/div/div[2]/section/div[2]/div/div/app-booking-engine-root/div/app-booking-menu/div[1]/app-tab/div/div[2]/div[2]/app-flight-search/div/div[3]/div[1]/div[2]/app-location-picker/div/div[2]",
     "LOCATION": "div.location-picker-list-option",
 }
+
+QATAR_AIRWAYS_FP_CLEANUP = {
+    "SHOW_OPTIONS": '//*[@id="show-options"]',
+    "SAVE_OPTIONS": "/html/body/div[8]/div[2]/div/div[2]/div/div/div/div/div/div[3]/div/div/button",
+}
+

@@ -6,6 +6,8 @@ import os
 from abc import ABC, abstractmethod
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from . import constants as const
 
@@ -151,6 +153,24 @@ class QatarAirwaysBot(BaseBot):
     def __init__(self, home_page_url=const.QATAR_AIRWAYS_URL, driver_path=const.DRIVER_PATH):
         super().__init__(home_page_url=home_page_url, driver_path=driver_path)
 
+    def _first_page_cleanup(self):
+        try:
+            WebDriverWait(self, 30).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["SHOW_OPTIONS"])) and
+                EC.element_to_be_clickable(
+                    (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["SHOW_OPTIONS"]))
+            ).click()
+
+            WebDriverWait(self, 30).until(
+                EC.presence_of_element_located(
+                    (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["SAVE_OPTIONS"])) and
+                EC.element_to_be_clickable(
+                    (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["SAVE_OPTIONS"]))
+            ).click()
+        except NoSuchElementException:
+            pass
+
     def select_start_date(self, date: datetime):
         raise NotImplementedError
 
@@ -164,7 +184,7 @@ class QatarAirwaysBot(BaseBot):
         raise NotImplementedError
 
     def select_landing_country(self, country_name: str):
-        raise NotImplementedError
+        pass
 
     def select_landing_city(self, city_name: str):
         raise NotImplementedError
