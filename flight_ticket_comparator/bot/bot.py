@@ -36,11 +36,19 @@ class BaseBot(ABC, webdriver.Firefox):
         pass
 
     @abstractmethod
-    def select_country(self):
+    def select_departure_country(self):
         pass
 
     @abstractmethod
-    def select_city(self):
+    def select_departure_city(self):
+        pass
+
+    @abstractmethod
+    def select_landing_country(self):
+        pass
+
+    @abstractmethod
+    def select_landing_city(self):
         pass
 
     @abstractmethod
@@ -70,10 +78,16 @@ class RoyalAirMarocBot(BaseBot):
     def select_end_date(self, date: datetime):
         raise NotImplementedError
 
-    def select_country(self):
+    def select_departure_country(self):
         raise NotImplementedError
 
-    def select_city(self):
+    def select_departure_city(self):
+        raise NotImplementedError
+
+    def select_landing_country(self):
+        raise NotImplementedError
+
+    def select_landing_city(self):
         raise NotImplementedError
 
     def select_passengers(self, adult: int = 1, teen: int = 1, child: int = 0, infant: int = 0):
@@ -97,10 +111,16 @@ class RyanairBot(BaseBot):
     def select_end_date(self, date: datetime):
         raise NotImplementedError
 
-    def select_country(self):
+    def select_departure_country(self):
         raise NotImplementedError
 
-    def select_city(self):
+    def select_departure_city(self):
+        raise NotImplementedError
+
+    def select_landing_country(self):
+        raise NotImplementedError
+
+    def select_landing_city(self):
         raise NotImplementedError
 
     def select_passengers(self, adult: int = 1, teen: int = 1, child: int = 0, infant: int = 0):
@@ -124,10 +144,16 @@ class QatarAirwaysBot(BaseBot):
     def select_end_date(self, date: datetime):
         raise NotImplementedError
 
-    def select_country(self):
+    def select_departure_country(self):
         raise NotImplementedError
 
-    def select_city(self):
+    def select_departure_city(self):
+        raise NotImplementedError
+
+    def select_landing_country(self):
+        raise NotImplementedError
+
+    def select_landing_city(self):
         raise NotImplementedError
 
     def select_passengers(self, adult: int = 1, teen: int = 0, child: int = 0, infant: int = 0):
