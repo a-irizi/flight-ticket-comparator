@@ -16,5 +16,7 @@ ROYAL_AIR_MAROC_FP_CLEANUP = {
 QATAR_AIRWAYS_FP_CLEANUP = {
     "SHOW_OPTIONS": '//*[@id="show-options"]',
     "SAVE_OPTIONS": "/html/body/div[8]/div[2]/div/div[2]/div/div/div/div/div/div[3]/div/div/button",
+    "FILTER_INPUT": '//*[@id="bw-from"]',
+    "LOCATION_LIST": '/html/body/div[8]/main/div/div/div/hero-component/div[3]/div/div/div/div/div[1]/div/div/div[5]/div[2]/div[1]/div[2]/span[1]/div',
+    "LOCATION": 'div.tt-suggestion',
 }
-
