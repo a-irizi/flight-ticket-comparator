@@ -29,7 +29,7 @@ def test_GIVEN_bot_WHEN_land_first_page_THEN_assert_bot_current_page_url_equals_
 
     assert bot.current_url == bot.home_page_url
 
-def test_GIVEN_bot_and_city_WHEN_select_city_and_city_is_correct_THEN_assert_select_city_does_not_raise_exception(royal_air_maroc_bot):
+def test_GIVEN_bot_and_city_WHEN_select_departure_city_and_city_is_correct_THEN_assert_select_departure_city_does_not_raise_exception(royal_air_maroc_bot):
     bot = royal_air_maroc_bot
 
     try:
@@ -38,6 +38,6 @@ def test_GIVEN_bot_and_city_WHEN_select_city_and_city_is_correct_THEN_assert_sel
         assert False, f'land_first_page raised an exception {exc}'
 
     try:
-        bot.select_landing_city(city_name="casablanca")
+        bot.select_departure_city(city_name="casablanca")
     except Exception as exc:
         assert False, f'select_city raised an exception {exc}'

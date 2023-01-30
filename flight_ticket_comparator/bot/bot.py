@@ -97,12 +97,6 @@ class RoyalAirMarocBot(BaseBot):
         pass
 
     def select_departure_city(self, city_name: str):
-        raise NotImplementedError
-
-    def select_landing_country(self, country_name: str):
-        pass
-
-    def select_landing_city(self, city_name: str):
         WebDriverWait(self, 30).until(
             EC.presence_of_element_located(
                 (By.XPATH, const.ROYAL_AIR_MAROC_FP_CLEANUP["FILTER_INPUT"])) and
@@ -129,6 +123,12 @@ class RoyalAirMarocBot(BaseBot):
         location = location[0]
 
         location.click()
+
+    def select_landing_country(self, country_name: str):
+        pass
+
+    def select_landing_city(self, city_name: str):
+        raise NotImplementedError
 
     def select_passengers(self, adult: int = 1, teen: int = 1, child: int = 0, infant: int = 0):
         raise NotImplementedError
