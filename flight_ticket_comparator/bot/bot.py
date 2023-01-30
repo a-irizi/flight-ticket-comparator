@@ -241,7 +241,35 @@ class QatarAirwaysBot(BaseBot):
         pass
 
     def select_landing_city(self, city_name: str):
-        raise NotImplementedError
+        WebDriverWait(self, 30).until(
+            EC.presence_of_element_located(
+                (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["FILTER_INPUT_2"])) and
+            EC.element_to_be_clickable(
+                (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["FILTER_INPUT_2"]))
+        )
+        filter_input = self.find_element(
+            By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP["FILTER_INPUT_2"])
+
+        webdriver.ActionChains(self).move_to_element(filter_input).click().perform()
+        filter_input.send_keys(city_name)
+
+        WebDriverWait(self, 30).until(
+            EC.presence_of_element_located(
+                (By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP['LOCATION_LIST_2'])))
+
+        location_list = self.find_element(
+            By.XPATH, const.QATAR_AIRWAYS_FP_CLEANUP['LOCATION_LIST_2'])
+
+        location = location_list.find_elements(
+            By.CSS_SELECTOR, const.QATAR_AIRWAYS_FP_CLEANUP["LOCATION"])
+
+        if len(location) != 1:
+            raise ValueError(
+                f'Qatar Airways does not list an airport in {city_name}')
+
+        location = location[0]
+
+        location.click()
 
     def select_passengers(self, adult: int = 1, teen: int = 0, child: int = 0, infant: int = 0):
         raise NotImplementedError

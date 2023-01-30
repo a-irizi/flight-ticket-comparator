@@ -41,3 +41,16 @@ def test_GIVEN_bot_and_city_WHEN_select_departure_city_and_city_is_correct_THEN_
         bot.select_departure_city(city_name="casablanca")
     except Exception as exc:
         assert False, f'select_city raised an exception {exc}'
+
+def test_GIVEN_bot_and_city_WHEN_select_landing_city_and_city_is_correct_THEN_assert_select_landing_city_does_not_raise_exception(qatar_airways_bot):
+    bot = qatar_airways_bot
+
+    try:
+        bot.land_first_page()
+    except Exception as exc:
+        assert False, f'land_first_page raised an exception {exc}'
+
+    try:
+        bot.select_landing_city(city_name="casablanca")
+    except Exception as exc:
+        assert False, f'select_city raised an exception {exc}'
